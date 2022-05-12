@@ -10,8 +10,9 @@ local underline = {}
 local strikethrough = {}
 
 return function(str)
+	-- print("Str", str)
 	str = String.list(str)
-
+	-- print("List", str)
 	local function replacePairs(full, pattern, startRep, closeRep)
 		-- print("Replace", full, pattern)
 		local firstIndex = String.find(full, pattern)
@@ -47,12 +48,12 @@ return function(str)
 	str = String.gsub(str, String.list("~~"), {strikethrough})
 	str = replacePairs(str, {strikethrough}, {"<s>"}, {"</s>"})
 
-	if String.find(str, ":") then
-		for key, result in pairs(emojiDictionary) do
-			str = String.gsub(str, String.list(":"..key..":"), String.list(result))
-		end
-	end
+	-- if String.find(str, ":") then
+	-- 	for key, result in pairs(emojiDictionary) do
+	-- 		str = String.gsub(str, String.list(":"..key..":"), String.list(result))
+	-- 	end
+	-- end
 	local result = String.bake(str)
-	print("Result", result)
+	-- print("Result", result)
 	return result
 end
