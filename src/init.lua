@@ -16,10 +16,10 @@ return function(str)
 	local function replacePairs(full, pattern, startRep, closeRep)
 		-- print("Replace", full, pattern)
 		local firstIndex = String.find(full, pattern)
-		if not firstIndex then print("A") return full end
+		if not firstIndex then return full end
 
 		local secondIndex = String.find(full, pattern, firstIndex + 1)
-		if not secondIndex then print("B") return full end
+		if not secondIndex then return full end
 
 		full = String.gsub(full, pattern, startRep, 1)
 		-- print("C1", full)
